@@ -1,7 +1,9 @@
-class Task:
-    def __init__(self, id: int, title: str, completed: bool = False):
-        self.id = id
+from sqlalchemy import Column, Integer, String, Boolean
+from app.database import Base
 
-        self.title = title
+class Task(Base):
+    __tablename__ = "tasks"
 
-        self.completed = completed
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String, index=True)
+    completed = Column(Boolean, default=False)
